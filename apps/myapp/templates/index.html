@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            div{
+                display:inline-block;
+
+            }
+            .Login{
+                vertical-align: top;
+                justify-content: center;
+            }
+            fieldset{
+                margin: auto;
+                width:400px;
+            }
+        </style>
+        <title>Login/Registration</title>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        <div align="center">
+            <div class="Register">
+                <form class="" action="/register" method="post">
+                    {% csrf_token %}
+                    <fieldset><legend><h3>Register</h3></legend><h4> Name:   <input type="text" name="name"></h4><br>
+                    <h4> Username:  <input type="text" name="uname"></h4><br>
+                    <h4> Password:  <input type="password" name="password"></h4><br>
+                    <h4> Confirm PW: <input type="password" name="confirm_password"></h4><br>
+                    <h4> Date Hired:   <input type="date" name="date_hired"></h4><br>
+                    <input type="submit" name="" value="Register">
+                    </fieldset>
+                </form>
+            </div>
+
+
+            {% if messages %}
+                {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <div class="Login">
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <fieldset><legend><h3>Login</h3></legend><h4>Username: <input type="text" name="uname" ></h4><br>
+                    <h4>Password:<input type="password" name="password"></h4><br>
+                    <input type="submit" name="" value="Login">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
